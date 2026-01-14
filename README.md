@@ -1,10 +1,3 @@
-Perfect — you already have the **right skeleton**.
-I’ll now give you a **complete, professional, interview-ready README.md** that you can **copy–paste as-is**.
-
-This README is written the way **real backend / full-stack engineers** write it, and it explains *what*, *why*, and *how* clearly to recruiters.
-
----
-
 # 📊 Investment Banking Deal Pipeline Management Portal
 
 A **full-stack enterprise-style web application** that simulates how **investment banks manage and track deal pipelines** such as **Merger, Acquisition, IPOs, debt, and equity financing**.
