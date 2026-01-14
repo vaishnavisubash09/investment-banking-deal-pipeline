@@ -1,6 +1,5 @@
-
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 spring:
   application:
@@ -10,6 +9,7 @@ spring:
     mongodb:
       uri: ${SPRING_DATA_MONGODB_URI}
       # uri: mongodb://localhost:27017/deal_pipeline_db
+      database: ${SPRING_DATA_MONGODB_DATABASE}
 
   jackson:
     serialization:
@@ -22,9 +22,5 @@ logging:
 
 jwt:
   secret: ${JWT_SECRET}
-  # secret: my-super-secret-key-for-investment-banking-deal-pipeline
-  expiration: 86400000   # 1 day
-
-
-
-
+    # secret: my-super-secret-key-for-investment-banking-deal-pipeline
+  expiration: 86400000
