@@ -8,7 +8,8 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://localhost:27017/deal_pipeline_db
+      uri: ${SPRING_DATA_MONGODB_URI}
+      # uri: mongodb://localhost:27017/deal_pipeline_db
 
   jackson:
     serialization:
@@ -20,6 +21,10 @@ logging:
     org.springframework.security: INFO
 
 jwt:
-  secret: my-super-secret-key-for-investment-banking-deal-pipeline
+  secret: ${JWT_SECRET}
+  # secret: my-super-secret-key-for-investment-banking-deal-pipeline
   expiration: 86400000   # 1 day
+
+
+
 
