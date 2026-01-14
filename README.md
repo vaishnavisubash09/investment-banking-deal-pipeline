@@ -1,39 +1,44 @@
-# 📊 Investment Banking Deal Pipeline Management Portal
+---
 
-A **full-stack enterprise-style web application** that simulates how **investment banks manage and track deal pipelines** such as **Merger, Acquisition, IPOs, debt, and equity financing**.
-The system demonstrates **role-based access control, secure authentication, workflow management, and containerized deployment**.
+# 📊 Investment Banking Deal Pipeline Management System
 
-This project is built to reflect **real-world backend and system design practices**, not just UI functionality.
+A **full-stack, production-style web application** designed to manage investment banking deals across multiple stages, users, and roles.
+Built with **Angular**, **Spring Boot**, **MongoDB**, and deployed on **Netlify + Render** with **JWT-based authentication**.
 
 ---
 
-## 🚀 Tech Stack
+## 🔗 Live Demo
 
-### Frontend
+### Frontend (Netlify)
 
-* **Angular 18**
-* Angular Material
-* TypeScript
-* Nginx (production static hosting)
+👉 **[https://comfy-stroopwafel-55b5a7.netlify.app](https://comfy-stroopwafel-55b5a7.netlify.app)**
 
-### Backend
+### Backend (Render)
 
-* **Spring Boot 3**
-* Spring Security
-* JWT Authentication
-* Spring Data MongoDB
-* Swagger / OpenAPI
+👉 **[https://investment-banking-deal-pipeline.onrender.com](https://investment-banking-deal-pipeline.onrender.com)**
 
-### Database
+> ⚠️ **Note:** The backend is hosted on Render’s free tier.
+> The first request may take **30–60 seconds** due to cold start. Subsequent requests are fast.
 
-* **MongoDB**
+---
 
-### DevOps & Deployment
+## 🏗️ System Architecture
 
-* Docker
-* Docker Compose
-* Multi-stage Docker builds
-* Nginx reverse proxy
+```
+Angular SPA (Netlify)
+        |
+        | HTTPS (REST APIs)
+        ↓
+Spring Boot Backend (Render)
+        |
+        ↓
+MongoDB Atlas (Cloud Database)
+```
+
+* Frontend served via Netlify CDN
+* Backend secured with Spring Security + JWT
+* MongoDB Atlas used for persistent storage
+* CORS configured for production deployment
 
 ---
 
@@ -42,211 +47,189 @@ This project is built to reflect **real-world backend and system design practice
 ### 🔐 Authentication & Security
 
 * JWT-based authentication
-* Secure login and token handling
-* Stateless REST APIs
-* Password encryption using BCrypt
+* Role-based access control (Admin / User)
+* Secure password hashing using BCrypt
+* Stateless session management
 
-### 👥 Role-Based Access Control
+### 📈 Deal Management
 
-* **ADMIN**
+* Create, view, edit, and delete deals
+* Deal pipeline visualization by stages
+* Deal notes and value tracking
+* Sector and deal-type classification
 
-  * Manage users
-  * View all deals
-  * Full dashboard access
-* **USER**
-
-  * View assigned deals only
-  * Limited dashboard visibility
-
-### 📈 Deal Pipeline Management
-
-* Create, update, and track deals
-* Deal stages:
-
-  * Prospect
-  * Under Evaluation
-  * Term Sheet Submitted
-  * Closed / Lost
-* Sector, type, and value classification
-
-### 📝 Collaboration
-
-* Add notes to deals
-* Track deal history and updates
-
-### 🛠 Admin Management
+### 👥 User Management (Admin)
 
 * Create and manage users
-* Activate / deactivate accounts
+* Activate / deactivate users
 * Assign roles
 
-### 📄 API Documentation
+### 📊 Dashboard
 
-* Interactive **Swagger UI**
-* JWT-secured API testing
-* OpenAPI 3 specification
+* Aggregated deal statistics
+* Pipeline summary view
+* Quick insights for decision-making
 
 ---
 
-## 🧠 System Architecture
+## 🛠️ Tech Stack
+
+### Frontend
+
+* **Angular (Standalone Components)**
+* TypeScript
+* SCSS
+* Angular Router
+* HTTP Interceptors
+* Netlify (Hosting)
+
+### Backend
+
+* **Spring Boot**
+* Spring Security
+* JWT (JSON Web Tokens)
+* Spring Data MongoDB
+* Maven
+* Render (Hosting)
+
+### Database
+
+* **MongoDB Atlas**
+
+---
+
+## 📁 Project Structure
 
 ```
-Browser
-  ↓
-Angular SPA (Nginx)
-  ↓ /api
-Spring Boot REST API
-  ↓
-MongoDB
+investment-banking-deal-pipeline/
+├── deal-pipeline-ui-frontend/   # Angular frontend
+│   ├── src/
+│   ├── public/_redirects        # Netlify SPA routing
+│   ├── angular.json
+│   └── package.json
+│
+├── deal-pipeline-backend/       # Spring Boot backend
+│   ├── src/main/java
+│   ├── src/main/resources
+│   └── pom.xml
+│
+├── docker-compose.yml
+└── README.md
 ```
 
-### Architecture Highlights
+---
 
-* SPA frontend served via Nginx
-* Backend exposed through REST APIs
-* JWT-secured endpoints
-* Database isolated from application containers
-* Docker networking for inter-service communication
+## 🌐 SPA Routing (Important)
+
+This project is a **Single Page Application (SPA)**.
+Netlify routing is configured using `_redirects`:
+
+```
+/*    /index.html   200
+```
+
+This ensures routes like `/login` and `/dashboard` work correctly on refresh and mobile devices.
 
 ---
 
-## 🐳 Run Locally with Docker (Recommended)
+## 🔑 Environment Configuration
 
-### Prerequisites
+### Backend (Render)
 
-* Docker
-* Docker Compose
-* Java 17+
-* Node.js 20+ (for local development only)
+The following environment variables are configured on Render:
+
+* `SPRING_DATA_MONGODB_URI`
+* `SPRING_DATA_MONGODB_DATABASE`
+* `JWT_SECRET`
+
+### Frontend
+
+API base URL is configured in:
+
+```ts
+environment.prod.ts
+```
+
+```ts
+apiUrl: 'https://investment-banking-deal-pipeline.onrender.com/api';
+```
 
 ---
 
-### 1️⃣ Build Backend JAR
+## 🚀 Deployment Details
+
+### Frontend
+
+* Hosted on **Netlify**
+* Automatic deployment on every push to `main`
+* Global CDN for fast delivery
+
+### Backend
+
+* Hosted on **Render**
+* Dockerized Spring Boot application
+* Auto-deploy on GitHub push
+* Cold-start behavior on free tier
+
+---
+
+## 🧪 Local Development (Optional)
+
+### Frontend
 
 ```bash
-cd backend/deal-pipeline
-mvn clean package -DskipTests
+cd deal-pipeline-ui-frontend
+npm install
+npm start
 ```
 
----
-
-### 2️⃣ Run Entire Stack
-
-From project root:
+### Backend
 
 ```bash
-docker compose down -v
-docker compose build --no-cache
-docker compose up
+cd deal-pipeline-backend
+./mvnw spring-boot:run
 ```
 
 ---
 
-### 3️⃣ Access the Application
+## 🔒 Security Notes
 
-| Service     | URL                                                                            |
-| ----------- | ------------------------------------------------------------------------------ |
-| Frontend    | [http://localhost:4200](http://localhost:4200)                                 |
-| Backend API | [http://localhost:8080](http://localhost:8080)                                 |
-| Swagger UI  | [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) |
-| MongoDB     | localhost:27017                                                                |
+* Only authentication endpoints are publicly accessible
+* All business APIs require a valid JWT
+* CORS restricted to Netlify production domain
+* Passwords are never stored in plain text
 
 ---
 
-## 🔑 Default Demo Credentials
+## 📌 Future Enhancements
 
-The application auto-seeds users on first startup using a **CommandLineRunner** (development/demo only).
-
-| Role  | Username | Password |
-| ----- | -------- | -------- |
-| ADMIN | admin    | admin123 |
-| USER  | user     | user123  |
-
-> ⚠️ In production, auto-seeding would be disabled or environment-controlled.
-
----
-
-## 📘 API Documentation (Swagger)
-
-Swagger UI is enabled for development:
-
-```
-http://localhost:8080/swagger-ui.html
-```
-
-Features:
-
-* JWT authentication support
-* Global `Authorize` button
-* Interactive endpoint testing
-* OpenAPI 3 compliant documentation
-
----
-
-## 🔐 Security Design Notes
-
-* Stateless JWT authentication
-* Passwords stored using BCrypt hashing
-* Role-based authorization enforced at API level
-* Sensitive fields protected based on role
-* No database credentials stored in code
-
----
-
-## 🧪 Development Notes
-
-* MongoDB runs as a **separate container**, simulating real cloud databases
-* Containers are ephemeral; data persistence is handled via Docker volumes
-* Frontend and backend are independently deployable
-* Nginx is used for SPA routing and reverse proxying `/api` calls
-
----
-
-## 🌍 Production Deployment Strategy
-
-In production, the application is deployed as:
-
-* **Frontend** → Netlify (Angular static build)
-* **Backend** → Cloud platform (Render / Railway / Fly.io)
-* **Database** → MongoDB Atlas
-
-This mirrors real-world SaaS deployments.
-
----
-
-## 📌 Project Motivation
-
-This project was built to:
-
-* Demonstrate **backend engineering fundamentals**
-* Apply **real authentication & authorization**
-* Practice **Dockerized system design**
-* Build a **resume-grade full-stack application**
-
-It is intentionally designed to go beyond CRUD and reflect **enterprise workflows**.
-
----
-
-## 📄 License
-
-This project is for educational and portfolio purposes.
+* Refresh token support
+* Audit logs
+* Advanced role permissions
+* Pagination & filtering improvements
+* CI/CD optimization
+* Performance monitoring
 
 ---
 
 ## 👤 Author
 
-**Vaish**
-Aspiring Java Backend / Full-Stack Developer
-Focused on Spring Boot, REST APIs, and system design
+**Vaishnavi Subash**
+Full-Stack Java Developer
+(Spring Boot • Angular • MongoDB)
 
 ---
 
-### ✅ Next Steps (Optional Enhancements)
+## ⭐ Final Note
 
-* Audit logging
-* Pagination & filtering
-* Email notifications
-* Flyway / migration scripts
-* CI/CD pipeline
+This project demonstrates:
 
+* Real-world full-stack architecture
+* Secure authentication & authorization
+* Cloud deployment challenges and solutions
+* Production-grade SPA routing & CORS handling
+
+It is intended as a **portfolio project** showcasing practical backend and frontend engineering skills.
+
+---
 
