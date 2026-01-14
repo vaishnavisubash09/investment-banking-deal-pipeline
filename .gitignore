@@ -1,0 +1,25 @@
+# Node
+node_modules/
+.angular/
+dist/
+
+# Java
+target/
+
+# Environment files
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+mongo-data/
+
+# Logs
+*.log
