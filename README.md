@@ -1,5 +1,3 @@
----
-
 # 📊 Investment Banking Deal Pipeline Management System
 
 A **full-stack, production-style web application** designed to manage investment banking deals across multiple stages, users, and roles.
@@ -230,6 +228,4 @@ This project demonstrates:
 * Production-grade SPA routing & CORS handling
 
 It is intended as a **portfolio project** showcasing practical backend and frontend engineering skills.
-
----
 
