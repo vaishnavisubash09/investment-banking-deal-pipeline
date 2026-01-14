@@ -7,7 +7,7 @@ This README is written the way **real backend / full-stack engineers** write it,
 
 # 📊 Investment Banking Deal Pipeline Management Portal
 
-A **full-stack enterprise-style web application** that simulates how **investment banks manage and track deal pipelines** such as **M&A, IPOs, debt, and equity financing**.
+A **full-stack enterprise-style web application** that simulates how **investment banks manage and track deal pipelines** such as **Merger, Acquisition, IPOs, debt, and equity financing**.
 The system demonstrates **role-based access control, secure authentication, workflow management, and containerized deployment**.
 
 This project is built to reflect **real-world backend and system design practices**, not just UI functionality.
