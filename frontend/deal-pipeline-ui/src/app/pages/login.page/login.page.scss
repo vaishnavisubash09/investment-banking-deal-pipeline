@@ -1,0 +1,33 @@
+.login-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f7fa;
+}
+
+.login-card {
+  width: 380px;
+  padding: 24px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #666;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.error {
+  color: #d32f2f;
+  margin-bottom: 12px;
+  text-align: center;
+}

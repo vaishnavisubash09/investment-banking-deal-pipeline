@@ -1,0 +1,75 @@
+.card {
+  margin-bottom: 24px;
+  padding: 24px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: middle; /* 🔑 fixes button alignment */
+}
+
+.users-table th {
+  text-align: left;
+  font-weight: 600;
+}
+
+.actions {
+  width: 160px;
+  text-align: center;
+}
+
+.action-btn {
+  min-width: 120px;
+}
+
+.role-chip {
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: #eee;
+  font-size: 12px;
+}
+
+.role-chip.admin {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.status {
+  font-weight: 600;
+}
+
+.status.active {
+  color: #2e7d32;
+}
+
+.status.inactive {
+  color: #c62828;
+}
+
+.page-header {
+  margin-bottom: 24px; // 👈 creates breathing room
+}
+
+.page-header h2 {
+  margin: 0;
+  font-weight: 600;
+}

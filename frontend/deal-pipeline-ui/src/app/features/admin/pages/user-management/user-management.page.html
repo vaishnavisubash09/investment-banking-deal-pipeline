@@ -1,0 +1,47 @@
+  <div class="page-header">
+  <h2>User Management</h2>
+</div>
+
+
+
+<mat-card class="users-card">
+
+  <table class="users-table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th class="actions">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let u of users">
+        <td>{{ u.username }}</td>
+
+        <td>
+          <span class="role-chip" [class.admin]="u.role === 'ADMIN'">
+            {{ u.role }}
+          </span>
+        </td>
+
+        <td>
+          <span class="status" [class.active]="u.active" [class.inactive]="!u.active">
+            {{ u.active ? 'Active' : 'Inactive' }}
+          </span>
+        </td>
+
+        <td class="actions">
+          <button
+            mat-stroked-button
+            [color]="u.active ? 'warn' : 'primary'"
+            (click)="toggleUser(u)">
+            {{ u.active ? 'Deactivate' : 'Activate' }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</mat-card>

@@ -1,0 +1,80 @@
+<mat-card class="deal-card" *ngIf="deal">
+
+  <!-- HEADER -->
+  <div class="deal-header">
+
+    <!-- LEFT -->
+    <div class="header-left">
+      <h2 class="client-name">{{ deal.clientName }}</h2>
+      <div class="meta">
+        {{ deal.dealType }} · {{ deal.sector }}
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="header-right">
+      <div class="deal-value">
+        {{ deal.dealValue | currency:'INR':'symbol':'1.0-0' }}
+      </div>
+
+      <div class="stage-badge" [ngClass]="deal.currentStage">
+        {{ deal.currentStage }}
+      </div>
+    </div>
+
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <!-- SUMMARY -->
+  <section class="section">
+    <h3>Summary</h3>
+    <p class="summary-text">
+      {{ deal.summary || 'No summary provided.' }}
+    </p>
+  </section>
+
+  <mat-divider></mat-divider>
+
+  <!-- NOTES -->
+  <section class="section">
+    <h3>Notes</h3>
+
+    <div *ngIf="deal.notes.length === 0" class="empty">
+      No notes added yet.
+    </div>
+
+    <div class="notes-list">
+      <div *ngFor="let n of deal.notes" class="note-item">
+        <div class="note-meta">
+          {{ n.createdBy }} · {{ n.createdAt | date:'short' }}
+        </div>
+        <div class="note-text">
+          {{ n.note }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <mat-divider></mat-divider>
+
+  <!-- ADD NOTE -->
+  <section class="section add-note">
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Add a note</mat-label>
+      <textarea
+        matInput
+        rows="3"
+        [(ngModel)]="newNote">
+      </textarea>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addNote()">
+      Add Note
+    </button>
+  </section>
+
+</mat-card>

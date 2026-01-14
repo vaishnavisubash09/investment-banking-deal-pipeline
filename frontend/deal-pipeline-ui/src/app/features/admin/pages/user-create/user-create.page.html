@@ -1,0 +1,26 @@
+<mat-card class="create-card">
+  <h2>Create User</h2>
+
+  <mat-form-field>
+    <input matInput placeholder="Username" [(ngModel)]="newUser.username">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Email" [(ngModel)]="newUser.email">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="password" placeholder="Password" [(ngModel)]="newUser.password">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select [(ngModel)]="newUser.role">
+      <mat-option value="USER">USER</mat-option>
+      <mat-option value="ADMIN">ADMIN</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="create()">
+    Create
+  </button>
+</mat-card>

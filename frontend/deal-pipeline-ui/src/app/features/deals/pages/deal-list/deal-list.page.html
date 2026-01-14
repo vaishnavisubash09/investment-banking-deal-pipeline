@@ -1,0 +1,45 @@
+<table class="deal-table">
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Type</th>
+      <th>Sector</th>
+      <th>Deal Value (INR) </th>
+      <th>Stage</th>
+      <th class="actions">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let deal of deals">
+      <td>{{ deal.clientName }}</td>
+      <td>{{ deal.dealType }}</td>
+      <td>{{ deal.sector }}</td>
+      <td>{{ deal.dealValue ?? '—' }}</td>
+
+      <td>
+        <span class="stage-pill" [class]="deal.currentStage">
+          {{ deal.currentStage }}
+        </span>
+      </td>
+
+      <td class="actions">
+        <button mat-icon-button [routerLink]="['/deals', deal.id]">
+          <mat-icon>visibility</mat-icon>
+        </button>
+
+        <button mat-icon-button [routerLink]="['/deals', deal.id, 'edit']">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          *ngIf="isAdmin"
+          mat-icon-button
+          color="warn"
+          (click)="deleteDeal(deal)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

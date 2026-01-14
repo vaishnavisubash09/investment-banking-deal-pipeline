@@ -1,0 +1,45 @@
+<mat-card class="edit-card" *ngIf="deal">
+
+  <h2>Edit Deal</h2>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Client Name</mat-label>
+    <input
+      matInput
+      [value]="deal.clientName"
+      disabled
+      readonly>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Sector</mat-label>
+    <input matInput [(ngModel)]="deal.sector">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Deal Value</mat-label>
+    <input matInput type="number" [(ngModel)]="deal.dealValue">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Stage</mat-label>
+    <mat-select [(ngModel)]="deal.currentStage">
+      <mat-option *ngFor="let s of stages" [value]="s">
+        {{ s }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Summary</mat-label>
+    <textarea matInput rows="4" [(ngModel)]="deal.summary"></textarea>
+  </mat-form-field>
+
+  <div class="actions">
+    <button mat-stroked-button (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="save()">
+      Save
+    </button>
+  </div>
+
+</mat-card>

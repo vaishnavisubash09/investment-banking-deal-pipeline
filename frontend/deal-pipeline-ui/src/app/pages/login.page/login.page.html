@@ -1,0 +1,32 @@
+<div class="login-wrapper">
+  <mat-card class="login-card">
+
+    <h2 class="title">Investment Banking Portal</h2>
+    <p class="subtitle">Sign in to continue</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+
+      <div *ngIf="error" class="error">{{ error }}</div>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="full-width"
+        [disabled]="loading"
+        type="submit">
+        {{ loading ? 'Signing in…' : 'Sign In' }}
+      </button>
+
+    </form>
+  </mat-card>
+</div>

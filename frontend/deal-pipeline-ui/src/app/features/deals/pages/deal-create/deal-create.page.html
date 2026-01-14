@@ -1,0 +1,65 @@
+<div class="page-container">
+
+  <mat-card class="form-card">
+
+    <h2 class="title">Create Deal</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="deal-form">
+
+      <!-- CLIENT NAME -->
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>Client Name</mat-label>
+        <input matInput formControlName="clientName" />
+      </mat-form-field>
+
+      <!-- DEAL TYPE -->
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>Deal Type</mat-label>
+        <mat-select formControlName="dealType">
+          <mat-option *ngFor="let type of dealTypes" [value]="type">
+            {{ type }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- SECTOR -->
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>Sector</mat-label>
+        <input matInput formControlName="sector" />
+      </mat-form-field>
+
+      <!-- SUMMARY -->
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>Summary</mat-label>
+        <textarea matInput rows="4" formControlName="summary"></textarea>
+      </mat-form-field>
+
+      <!-- ADMIN ONLY -->
+      <mat-form-field
+        *ngIf="isAdmin()"
+        appearance="outline"
+        class="full">
+
+        <mat-label>Deal Value (₹)</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="dealValue" />
+      </mat-form-field>
+
+      <!-- ACTIONS -->
+      <div class="actions">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="form.invalid">
+          Create Deal
+        </button>
+      </div>
+
+    </form>
+
+  </mat-card>
+
+</div>

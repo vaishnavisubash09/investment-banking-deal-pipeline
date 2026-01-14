@@ -1,0 +1,53 @@
+<div class="pipeline">
+
+  <div
+    class="stage-column"
+    *ngFor="let stage of stages"
+    [ngClass]="stage.toLowerCase()">
+
+    <!-- STAGE HEADER -->
+    <div class="stage-header">
+      <span class="stage-title">
+        {{ stage.replace('_', ' ') }}
+      </span>
+
+      <span class="count">
+        {{ dealsByStage[stage].length }}
+      </span>
+    </div>
+
+    <!-- DROP ZONE -->
+    <div
+      cdkDropList
+      [cdkDropListData]="dealsByStage[stage]"
+      class="stage-body"
+      (cdkDropListDropped)="drop($event, stage)">
+
+      <!-- EMPTY STATE -->
+      <div
+        class="empty"
+        *ngIf="dealsByStage[stage].length === 0">
+        No deals
+      </div>
+
+      <!-- DEAL CARD -->
+      <div
+        class="deal-card"
+        *ngFor="let deal of dealsByStage[stage]"
+        cdkDrag
+        (click)="openDeal(deal)">
+
+        <div class="deal-title">
+          {{ deal.clientName }}
+        </div>
+
+        <div class="deal-meta">
+          {{ deal.dealType }} · {{ deal.sector }}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

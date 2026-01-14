@@ -1,0 +1,24 @@
+<div class="kpi-grid" *ngIf="summary$ | async as summary">
+
+  <mat-card class="kpi">
+    <h3>Total Deals</h3>
+    <p class="value">{{ summary.totalDeals }}</p>
+  </mat-card>
+
+  <mat-card class="kpi">
+    <h3>Active Deals</h3>
+    <p class="value">{{ summary.activeDeals }}</p>
+  </mat-card>
+
+  <mat-card class="kpi">
+    <h3>Closed Deals</h3>
+    <p class="value">{{ summary.closedDeals }}</p>
+  </mat-card>
+
+  <!-- ADMIN ONLY -->
+  <mat-card class="kpi" *ngIf="isAdmin()">
+    <h3>Users</h3>
+    <p class="value">{{ summary.totalUsers }}</p>
+  </mat-card>
+
+</div>

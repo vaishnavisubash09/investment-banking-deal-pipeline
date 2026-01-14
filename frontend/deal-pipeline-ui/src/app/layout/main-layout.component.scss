@@ -1,0 +1,68 @@
+/* Sidenav container */
+.layout-container {
+  height: 100vh;
+}
+
+/* Sidebar width */
+.sidenav {
+  width: 240px;
+  padding-top: 8px;
+}
+
+/* Logo */
+.logo {
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Toolbar */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.user-info {
+  margin-right: 16px;
+  font-weight: 500;
+}
+
+/* ============================= */
+/* 🔥 REAL FIX STARTS HERE 🔥 */
+/* ============================= */
+
+/* Remove Material full-width background */
+mat-nav-list .mdc-list-item {
+  border-radius: 10px;
+  margin: 4px 12px;
+}
+
+/* Active item (Material applies this internally) */
+mat-nav-list .mdc-list-item.mdc-list-item--activated {
+  background-color: rgba(25, 118, 210, 0.12) !important;
+}
+
+/* Active icon + text */
+mat-nav-list .mdc-list-item.mdc-list-item--activated
+.mdc-list-item__primary-text,
+mat-nav-list .mdc-list-item.mdc-list-item--activated mat-icon {
+  color: #1976d2;
+  font-weight: 600;
+}
+
+/* Hover effect */
+mat-nav-list .mdc-list-item:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.sub-link {
+  padding-left: 48px;
+  font-size: 14px;
+  opacity: 0.85;
+}
+

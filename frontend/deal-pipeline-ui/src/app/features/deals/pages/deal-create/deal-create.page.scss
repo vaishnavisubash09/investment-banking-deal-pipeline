@@ -1,0 +1,50 @@
+/* ================= PAGE ================= */
+
+.page-container {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ================= CARD ================= */
+
+.form-card {
+  width: 100%;
+  max-width: 720px;
+  padding: 28px 32px;
+  border-radius: 16px;
+}
+
+/* ================= TITLE ================= */
+
+.title {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* ================= FORM ================= */
+
+.deal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.full {
+  width: 100%;
+}
+
+/* ================= ACTIONS ================= */
+
+.actions {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ================= INPUT TEXT ================= */
+
+.mat-mdc-input-element {
+  font-size: 14.5px;
+}

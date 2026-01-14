@@ -1,0 +1,49 @@
+.dashboard {
+  padding: 24px;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.role {
+  color: #666;
+  margin-top: -8px;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.kpi {
+  padding: 16px;
+  text-align: center;
+}
+
+.kpi h3 {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1976d2;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.action-card {
+  padding: 16px;
+}
+
+.action-card h3 {
+  margin-bottom: 8px;
+}

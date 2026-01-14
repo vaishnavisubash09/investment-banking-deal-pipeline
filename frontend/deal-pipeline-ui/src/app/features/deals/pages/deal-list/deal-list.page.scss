@@ -1,0 +1,48 @@
+.deal-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.deal-table th,
+.deal-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.deal-table th {
+  font-weight: 600;
+  color: #444;
+}
+
+.actions {
+  white-space: nowrap;
+}
+
+.actions button {
+  margin-right: 6px;
+}
+
+/* Stage pills */
+.stage-pill {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.stage-pill.PROSPECT {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.stage-pill.LOST {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.stage-pill.WON {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
